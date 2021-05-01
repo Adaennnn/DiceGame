@@ -62,6 +62,10 @@ button {
   background-color: var(--color-4);
 }
 
+#doubleBtn {
+  background-color: var(--color-5);
+}
+
 button:focus {
   outline: none;
 }

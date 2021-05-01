@@ -1,6 +1,7 @@
 let player1Turn = true;
 let scorePlayerOne = 0;
 let scorePlayerTwo = 0;
+let rollCount = 0;
 
 const player1Scoreboard = document.querySelector("#player1Scoreboard");
 const player2Scoreboard = document.querySelector("#player2Scoreboard");
@@ -25,6 +26,7 @@ const resetGame = () => {
   resetButton.style.display = "none";
   rollButton.style.display = "block";
   doubleButton.style.display = "block";
+  rollCount = 0;
 }
 
 const hideAndShow = n => {
@@ -43,6 +45,7 @@ const randomNumberDouble = (max, n) => {
 }
 
 rollButton.addEventListener("click", () => {
+  rollCount += 1
   const rollRandom = randomNumber(6);
   if (player1Turn) {
     scorePlayerOne += rollRandom;
@@ -60,9 +63,9 @@ rollButton.addEventListener("click", () => {
     message.textContent = "Player 1 Turn";
   }
 
-  if (scorePlayerOne >= 20) {
+  if (scorePlayerOne >= 20 && rollCount % 2 == 0) {
     hideAndShow(1);
-  } else if (scorePlayerTwo >= 20) {
+  } else if (scorePlayerTwo >= 20 && rollCount % 2 == 0) {
     hideAndShow(2)
   }
 
@@ -70,6 +73,7 @@ rollButton.addEventListener("click", () => {
 });
 
 doubleButton.addEventListener("click", () => {
+  rollCount += 1
   const random = Math.random();
   const doubleRandom = randomNumberDouble(6,2);
 
@@ -103,9 +107,9 @@ doubleButton.addEventListener("click", () => {
     message.textContent = "Player 1 Turn";
   }
 
-  if (scorePlayerOne >= 20) {
+  if (scorePlayerOne >= 20 && rollCount % 2 == 0) {
     hideAndShow(1);
-  } else if (scorePlayerTwo >= 20) {
+  } else if (scorePlayerTwo >= 20 && rollCount % 2 == 0) {
     hideAndShow(2)
   }
 
